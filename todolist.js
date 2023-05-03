@@ -90,7 +90,18 @@ class TodoList {
   }
 
    forEach(callback) {
-    this.todos.forEach(callback);
+    this.todos.forEach(callback)
+  }
+
+   filter(callback) {
+    let newList = new TodoList(this.title);
+    this.forEach(todo => {
+      if (callback(todo)) {
+        newList.add(todo);
+      }
+    });
+
+    return newList;
   }
 
   toString() {
@@ -105,4 +116,5 @@ class TodoList {
     }
   }
 }
+
 
