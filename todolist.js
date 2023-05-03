@@ -32,3 +32,19 @@ class Todo {
     return this.title;
   }
 }
+
+// This class represents a collection of Todo objects.
+// You can perform typical collection-oriented actions
+// on a TodoList object, including iteration and selection.
+
+class TodoList {
+  constructor(title) {
+    this.title = title;
+    this.todos = [];
+  }
+
+  // rest of class needs implementation
+}
+
+let list = new TodoList("Today's Todos");
+console.log(list); // TodoList { title: "Today's Todos", todos: [] }
