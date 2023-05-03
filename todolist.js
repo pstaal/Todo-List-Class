@@ -89,6 +89,10 @@ class TodoList {
     return this.todos.splice(index, 1);
   }
 
+   forEach(callback) {
+    this.todos.forEach(callback);
+  }
+
   toString() {
     let title = `---- ${this.title} ----`;
     let list = this.todos.map(todo => todo.toString()).join("\n");
@@ -101,3 +105,4 @@ class TodoList {
     }
   }
 }
+
