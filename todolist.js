@@ -27,6 +27,10 @@ class Todo {
   isDone() {
     return this.done;
   }
+
+  getTitle() {
+    return this.title;
+  }
 }
 
 // This class represents a collection of Todo objects.
@@ -89,11 +93,17 @@ class TodoList {
     return this.todos.splice(index, 1);
   }
 
-   forEach(callback) {
-    this.todos.forEach(callback)
+  toString() {
+    let title = `---- ${this.title} ----`;
+    let list = this.todos.map(todo => todo.toString()).join("\n");
+    return `${title}\n${list}`;
   }
 
-   filter(callback) {
+  forEach(callback) {
+    this.todos.forEach(todo => callback(todo));
+  }
+
+  filter(callback) {
     let newList = new TodoList(this.title);
     this.forEach(todo => {
       if (callback(todo)) {
@@ -104,7 +114,7 @@ class TodoList {
     return newList;
   }
 
-   findByTitle(title) {
+  findByTitle(title) {
     return this.filter(todo => todo.getTitle() === title).first();
   }
 
@@ -135,17 +145,9 @@ class TodoList {
     return this.todos.slice();
   }
 
-  toString() {
-    let title = `---- ${this.title} ----`;
-    let list = this.todos.map(todo => todo.toString()).join("\n");
-    return `${title}\n${list}`;
-  }
-
   _validateIndex(index) { // _ in name indicates "private" method
     if (!(index in this.todos)) {
       throw new ReferenceError(`invalid index: ${index}`);
     }
   }
 }
-
-
