@@ -19,4 +19,13 @@ describe('TodoList', () => {
   });
 
   // your tests go here
+  test('todolist has a size of 3', () => {
+    expect(list.size()).toBe(3);
+  });
+
+  test('todolist has the following three items', () => {
+    expect(list.toArray()).toEqual(['Buy milk', 'Clean room', 'Go to the gym']);
+  });
+
+
 });
